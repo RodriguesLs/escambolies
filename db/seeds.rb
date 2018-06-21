@@ -22,3 +22,5 @@ categories.each do |category|
   Category.find_or_create_by(description: category)
 end
 puts "Categories saved!"
+
+Admin.create([email: "admin@admin", password: "190195", password_confirmation: "190195"])

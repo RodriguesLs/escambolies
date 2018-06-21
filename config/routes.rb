@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   namespace :backoffice do
   resources :categories, except: [:show, :destroy]
+  resources :admins, except: [:show]
   get 'dashboard', to: 'dashboard#index'
   end
 
@@ -13,8 +14,9 @@ Rails.application.routes.draw do
   end
 
     
-  devise_for :admins
+  devise_for :admins #, :skip => [:registrations]
   devise_for :members
+  
   root 'site/home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
