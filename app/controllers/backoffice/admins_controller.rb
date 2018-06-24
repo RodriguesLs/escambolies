@@ -2,35 +2,30 @@ class Backoffice::AdminsController < BackofficeController
   before_action :set_admin, only: [:edit, :update, :destroy]
   
   def index
-    @admins = Admin.all
+    #@admins = Admin.all
+    #@admins = Admin.with_restricted_access
+    @admins = policy_scope(Admin)
   end
   
   def new
     @admin = Admin.new
+    authorize @admin
   end
   
   def create
     @admin = Admin.new(params_admin)
-    if  @admin.save 
+    
+    if @admin.save 
         redirect_to backoffice_admins_path, notice: "Administration (#{@admin.email}) save successful"
     else
        render :new
-     end
+    end
   end
   
   def edit
   end
   
   def update
-    
-    pass = params[:admin][:password]
-    pass_confirm = params[:admin][:password_confirmation]
-    
-    if pass.blank? && pass_confirm.blank? 
-      params[:admin].delete(:password)
-      params[:admin].delete(:password_confirmation)
-    end
-    
     if @admin.update(params_admin)
       redirect_to backoffice_admins_path, notice: "Administration (#{@admin.email}) update successful"
     else
@@ -54,7 +49,13 @@ class Backoffice::AdminsController < BackofficeController
     end
     
     def params_admin
-      params.require(:admin).permit(:email, :password, :password_confirmation)
+      pass = params[:admin][:password]
+      pass_confirm = params[:admin][:password_confirmation]
+      
+       if pass.blank? && pass_confirm.blank? 
+         params[:admin].except!(:password, :password_confirmation)
+       end
+      params.require(:admin).permit(:name, :email, :password, :password_confirmation)
     end
 
 end

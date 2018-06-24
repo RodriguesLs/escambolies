@@ -23,4 +23,7 @@ categories.each do |category|
 end
 puts "Categories saved!"
 
-Admin.create([email: "admin@admin", password: "190195", password_confirmation: "190195"])
+Admin.create!(email: "admin@admin", 
+            password: "190195", 
+            password_confirmation: "190195", 
+            role: 0)

@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'faker'
-gem 'rails-assets-bootstrap', '3.3.7', source: 'https://rails-assets.org'
-gem 'rails-assets-notifyjs', source: 'https://rails-assets.org'
+source 'https://rails-assets.org' do 
+  gem 'rails-assets-bootbox'  
+  gem 'rails-assets-bootstrap', '3.3.7'
+  gem 'rails-assets-notifyjs'
+end
+
+gem 'pundit'
 gem 'bootstrap_sb_admin_base_v2'
 gem 'devise-i18n'
 gem 'devise'
@@ -24,7 +28,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -49,7 +53,7 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
+  gem 'faker'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
