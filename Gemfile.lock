@@ -102,7 +102,7 @@ GEM
     nokogiri (1.8.3)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
-    pg (1.0.0)
+    pg (0.21.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     rack (1.6.10)
@@ -213,7 +213,7 @@ DEPENDENCIES
   foreman
   jbuilder (~> 2.0)
   jquery-rails
-  pg
+  pg (~> 0.18)
   pundit
   rails (= 4.2.5)
   rails-assets-bootbox!
