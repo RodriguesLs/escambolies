@@ -6,6 +6,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-notifyjs'
 end
 
+gem 'enum_help'
 gem 'pundit'
 gem 'bootstrap_sb_admin_base_v2'
 gem 'devise-i18n'

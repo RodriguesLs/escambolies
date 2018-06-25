@@ -8,6 +8,10 @@
             <%= link_to new_backoffice_admin_path, class:"btn btn-success btn-circle pull-right", style:"margin-top: -5px" do%>
                 <i class="fa fa-plus"></i>
             <%end%>
+            <% else %>
+            <%= link_to new_backoffice_admin_path, class:"btn btn-success btn-circle pull-right", style:"margin-top: -5px", disabled:"disabled" do%>
+                <i class="fa fa-plus"></i>
+            <%end%>
         <%end%>
     </div>
     <!-- /.panel-heading -->
@@ -30,7 +34,7 @@
                             <td><%= admin.id%></td>
                             <td><%= admin.name%></td>
                             <td><%= admin.email %></td>
-                            <td><%= admin.role_br %></td>
+                            <td><%= admin.role_i18n %></td>
                             <td style="width: 100px">
                                 <%= link_to edit_backoffice_admin_path(admin), class: "btn btn-primary btn-circle" do%>
                                     <i class="fa fa-edit"></i>

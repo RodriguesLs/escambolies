@@ -66,6 +66,8 @@ GEM
     devise-i18n (1.6.2)
       devise (>= 4.4)
     dotenv (0.7.0)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     erubis (2.7.0)
     execjs (2.7.0)
     faker (1.8.7)
@@ -200,6 +202,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   devise-i18n
+  enum_help
   faker
   foreman
   jbuilder (~> 2.0)
