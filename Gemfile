@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
+ruby "2.3.4"
 
 source 'https://rails-assets.org' do 
   gem 'rails-assets-bootbox'  
   gem 'rails-assets-bootstrap', '3.3.7'
   gem 'rails-assets-notifyjs'
 end
+
 
 gem 'enum_help'
 gem 'pundit'
@@ -15,8 +17,6 @@ gem 'foreman'
 gem 'rails-i18n'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -49,6 +49,8 @@ group :development, :test do
   gem 'byebug'
   #gem "better_errors"
   gem 'rails-erd'
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
 end
 
 group :development do
@@ -59,3 +61,7 @@ group :development do
   gem 'spring'
 end
 
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
