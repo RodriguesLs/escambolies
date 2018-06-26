@@ -1,6 +1,7 @@
 class Backoffice::AdminsController < BackofficeController
   before_action :set_admin, only: [:edit, :update, :destroy]
-  
+  after_action :verify_authorized, only: [:new, :destroy]
+  after_action :verify_policy_scoped, only: :index
   def index
     #@admins = Admin.all
     #@admins = Admin.with_restricted_access
@@ -34,6 +35,7 @@ class Backoffice::AdminsController < BackofficeController
   end
   
   def destroy
+    authorize @admin
     admin_email = @admin.email
     if @admin.destroy
       redirect_to backoffice_admins_path, notice: "Administration (#{admin_email}) destroy successful"
@@ -55,7 +57,7 @@ class Backoffice::AdminsController < BackofficeController
        if pass.blank? && pass_confirm.blank? 
          params[:admin].except!(:password, :password_confirmation)
        end
-      params.require(:admin).permit(:name, :email, :password, :password_confirmation)
+      params.require(:admin).permit(policy(@admin).permit_attr)
     end
 
 end
