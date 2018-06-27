@@ -8,7 +8,10 @@ Rails.application.configure do
   
   #BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV ['TRUSTED_IP']
   
-  config.action_mailer.default_url_options = {host: 'localhost', port: 3000}
+  #config.action_mailer.default_url_options = {host: 'localhost', port: 3000}
+  #MailCatcher
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 8082 }
   
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

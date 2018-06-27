@@ -2,6 +2,7 @@ class Backoffice::AdminsController < BackofficeController
   before_action :set_admin, only: [:edit, :update, :destroy]
   after_action :verify_authorized, only: [:new, :destroy]
   after_action :verify_policy_scoped, only: :index
+  
   def index
     #@admins = Admin.all
     #@admins = Admin.with_restricted_access
@@ -28,6 +29,7 @@ class Backoffice::AdminsController < BackofficeController
   
   def update
     if @admin.update(params_admin)
+      AdminMailer.update_email(current_admin, @admin).deliver_now
       redirect_to backoffice_admins_path, notice: "Administration (#{@admin.email}) update successful"
     else
       render :edit
@@ -51,13 +53,20 @@ class Backoffice::AdminsController < BackofficeController
     end
     
     def params_admin
+      
       pass = params[:admin][:password]
       pass_confirm = params[:admin][:password_confirmation]
       
        if pass.blank? && pass_confirm.blank? 
          params[:admin].except!(:password, :password_confirmation)
        end
-      params.require(:admin).permit(policy(@admin).permit_attr)
+       
+       if @admin.blank?
+         params.require(:admin).permit(:name, :email, :role, :password, :password_confirmation)
+       else
+         params.require(:admin).permit(policy(@admin).permit_attr)
+       end
+    
     end
 
 end
