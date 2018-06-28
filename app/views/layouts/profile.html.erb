@@ -37,7 +37,7 @@
   
   <%= render partial: "layouts/site_shared/navigation" %>
 
-  <div id="wrapper">
+  <div id="wrapper" class="toggled">
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
@@ -75,11 +75,11 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
+                <!--<div class="row">-->
+                <!--    <div class="col-lg-12">-->
                         <%= yield %>
-                    </div>
-                </div>
+                <!--    </div>-->
+                <!--</div>-->
             </div>
         </div>
         <!-- /#page-content-wrapper -->

@@ -2,8 +2,10 @@ namespace :utils do
   
   desc "Setup Development"
   task setup_dev: :environment do
+    var_save = Rails.root.join('public', 'system')
     p "Executando setups"
       %x(rake db:drop)
+      %x(rm -rf var_save)
       %x(rake db:create)
       %x(rake db:migrate)
       %x(rake db:seed)
