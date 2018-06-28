@@ -7,6 +7,8 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-notifyjs'
 end
 
+gem "paperclip", "~> 6.0.0"
+gem 'money-rails', '~>1'
 gem 'lerolero_generator'
 gem 'faker'
 gem 'enum_help'

@@ -32,3 +32,9 @@ Admin.create!(email: "test@test",
               password: "testers",
               password_confirmation: "testers",
               role: 1)
+              
+Member.create!(
+              email: "member@member",
+              password: "190195",
+              password_confirmation: "190195"
+              )
